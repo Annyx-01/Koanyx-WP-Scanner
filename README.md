@@ -1,104 +1,190 @@
-Koanyx WP Scanner — WordPress Reconnaissance & Vulnerability Mapper
-Koanyx WP Scanner is a browser extension that passively fingerprints WordPress sites, enumerates exposed usernames, detects installed plugins, and maps them against known CVEs — all in one lightweight popup.
+# **Koanyx WP Scanner -- WordPress Reconnaissance & Vulnerability Mapper**
 
-Fast. Passive. Insightful. Built for security researchers, penetration testers, and blue/red teams.
+[![Version](https://img.shields.io/badge/version-2.3-maroon.svg)]() [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Built by Nuknov](https://img.shields.io/badge/Built%20by-Nuknov-000000?logo=github&logoColor=white)](https://github.com/Nuknov)
+[![Built by AnonKryptiQuz](https://img.shields.io/badge/Built%20by-AnonKryptiQuz-000000?logo=github&logoColor=white)](https://github.com/AnonKryptiQuz)
+[![Built by 0nsec](https://img.shields.io/badge/Built%20by-0nsec-000000?logo=github&logoColor=white)](https://github.com/0nsec)
 
-Installation (Load Unpacked)
 
-Koanyx WP Scanner is a Manifest V3 extension distributed as source, not through a web store — so it's loaded as an unpacked extension. Steps are nearly identical across Chromium-based browsers, with Firefox handled separately below.
+**Koanyx WP Scanner** is a powerful WordPress reconnaissance extension designed to
+**enumerate usernames**, **fingerprint plugins**, and **map known vulnerabilities**
+with associated **CVE references** all in one clean, automated workflow.
 
-0. Get the code (all browsers)
-bash
-git clone https://github.com/<your-username>/Koanyx-WP-Scanner.git
+Fast. Precise. Insightful.  
+Built for **security researchers, penetration testers, and blue/red teams**.
 
-Or download the ZIP from GitHub (Code → Download ZIP) and extract it somewhere permanent — the folder must stay in place, since Chromium browsers load the extension directly from it (it isn't copied anywhere).
+---
 
-Google Chrome
-Open chrome://extensions/
-Toggle Developer mode on (top-right corner)
-Click Load unpacked
-Select the extracted Koanyx-WP-Scanner folder (the one containing manifest.json)
-The shield icon appears in the toolbar — click the puzzle-piece icon and pin it for easy access
+## 📸 **Screenshot**
 
-Microsoft Edge
-Open edge://extensions/
-Toggle Developer mode on (left sidebar)
-Click Load unpacked
-Select the Koanyx-WP-Scanner folder
-Pin it from the extensions (puzzle-piece) menu
+<img src="https://i.ibb.co/G4sZqF38/Picsart-26-01-09-23-27-53-159.jpg"/>
 
-Brave
-Open brave://extensions/
-Toggle Developer mode on (top-right corner)
-Click Load unpacked
-Select the Koanyx-WP-Scanner folder
-Pin it from the extensions menu
+---
 
-Opera
-Open opera://extensions/
-Toggle Developer mode on (top-right corner)
-Click Load unpacked
-Select the Koanyx-WP-Scanner folder
+## 🧩 **What Koanyx WP Scanner Does**
 
-Vivaldi
-Open vivaldi://extensions/
-Toggle Developer mode on (top-right corner)
-Click Load unpacked
-Select the Koanyx-WP-Scanner folder
+- Enumerates **WordPress usernames**
+- Detects **installed & exposed plugins**
+- Maps **known plugin vulnerabilities**
+- Displays **CVE IDs & vulnerability references**
+- Highlights **potential attack surfaces**
+- Works on **live WordPress sites**
+- Clean UI inside the browser
+- No intrusive scanning and recon only
 
-Mozilla Firefox (temporary install)
-Firefox doesn't support permanently loading unsigned Manifest V3 extensions from disk — only a temporary load that lasts until Firefox is closed:
+Designed for **maximum intelligence, minimal noise**.
 
-Open about:debugging#/runtime/this-firefox
-Click Load Temporary Add-on…
-Select any file inside the Koanyx-WP-Scanner folder, e.g. manifest.json
-The extension loads immediately but is removed when Firefox restarts — repeat these steps each session, or package it with web-ext build and submit it to Mozilla for a signed, permanent install
-Updating
+---
 
-To update after pulling new changes, just git pull in the cloned folder, then go back to chrome://extensions/ (or the equivalent page) and click the reload (⟳) icon on the Koanyx WP Scanner card — no need to remove and re-add it.
+## 🛰️ **Tech Stack**
 
-Uninstalling
-Go to the browser's extensions page, find Koanyx WP Scanner, and click Remove. Deleting the local folder alone does not uninstall it from the browser.
+- **Manifest V3** - Latest Chrome Extension API
+- **JavaScript** - Core extension logic
+- **Chrome Extensions API** - Tab management, content scripts, background service worker
+- **WordPress REST API** - User enumeration
+- **CVE Database** - Vulnerability intelligence
+- **Passive Reconnaissance** - No active exploitation
 
- How It Works
-WordPress Detection
-Meta generator tag (<meta name="generator" content="WordPress X.X">)
-/wp-content/ and /wp-includes/ directory references
-/wp-json/ REST API endpoints
-Plugin Detection
-Script/stylesheet tags referencing /wp-content/plugins/
-Version parameters in query strings (?ver=X.X.X)
-Inline HTML references to plugin assets
-Vulnerability Checking
-Plugin CVE database — maps plugin slugs to known CVE records
-WordPress core CVE database — 50+ core vulnerabilities with affected version ranges
-Version comparison logic — matches the detected site version against vulnerable ranges
-Username Enumeration
-DOM parsing — scans for author links in page HTML
-REST API — queries /wp-json/wp/v2/users
-Author archives — tests /?author=1,2,3 redirects
+---
 
- Design
-Koanyx WP Scanner ships with a mahogany color theme (light and dark) and a dedicated shield-style icon set (16/32/48/128px) with green/red status indicators shown in the toolbar depending on whether WordPress was detected.
+## ⚡ **Features**
 
- Disclaimer
-This tool is intended solely for educational, research, and authorized security testing purposes.
-You must have explicit permission to analyze any website you do not own.
-Koanyx WP Scanner does not exploit vulnerabilities — it only identifies publicly available information.
-The athor and contributors are not responsible for misuse or legal consequences resulting from unauthorized use.
-Always follow ethical hacking standards and applicable laws.
+| Feature                     | Details                                                     |
+|-----------------------------|-------------------------------------------------------------|
+|  Username Enumeration     | Identifies WordPress user accounts                          |
+|  Plugin Discovery         | Detects installed & exposed plugins                         |
+|  Vulnerability Mapping    | Matches plugins against known vulnerabilities               |
+|  CVE Intelligence         | Displays CVE IDs with vulnerability details                 |
+|  Target Fingerprinting    | WordPress version & structure hints                         |
+|  Passive Recon            | No brute-force or exploit execution                          |
+|  Research Focused         | Ideal for audits, bug bounty & assessments                  |
+|  Lightweight Extension    | Fast, clean & efficient UI                                  |
 
- Use Cases
-WordPress security audits
-Bug bounty reconnaissance
-Red team / blue team assessments
-Plugin exposure analysis
-Vulnerability research
-Cybersecurity education & training
+---
 
- License
-Released under the MIT License.
+## 🔥 **Extension Preview (Recon Output)**
 
-🙌 Contributing
+```json
+{
+  "target": "example.com",
+  "wordpress_detected": true,
+  "users_found": [
+    "admin",
+    "editor",
+    "author1"
+  ],
+  "plugins_detected": [
+    {
+      "name": "Contact Form 7",
+      "version": "5.7.6",
+      "vulnerabilities": [
+        {
+          "cve": "CVE-2023-12345",
+          "severity": "Medium",
+          "description": "Unrestricted file upload under specific conditions"
+        }
+      ]
+    }
+  ]
+}
+```
 
-Issues and pull requests are welcome — especially updates to the CVE database as new WordPress core and plugin vulnerabilities are disclosed.
+---
+
+## 🛠️ Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Nuknov/Koanyx-WP-Scanner.git
+   cd Koanyx-WP-Scanner
+   ```
+
+2. **Open your browser's extension page**
+   - Chrome: Navigate to `chrome://extensions/`
+   - Edge: Navigate to `edge://extensions/`
+
+3. **Enable Developer Mode**
+   - Toggle the switch in the top-right corner
+
+4. **Load the extension**
+   - Click "Load unpacked"
+   - Select the `Koanyx-WP-Scanner` directory
+
+5. **Pin the extension** (optional)
+   - Click the puzzle icon in the toolbar
+   - Pin "Koanyx WP Scanner" for easy access
+
+### Method 2: Firefox (Temporary)
+
+1. Navigate to `about:debugging#/runtime/this-firefox`
+2. Click "Load Temporary Add-on"
+3. Select any file in the Koanyx-WP-Scanner directory (e.g., `manifest.json`)
+
+
+## ⚙️ How It Works
+
+### WordPress Detection
+Koanyx WP Scanner uses multiple detection methods:
+- Meta generator tags (`<meta name="generator" content="WordPress X.X">`)
+- `/wp-content/` and `/wp-includes/` directory references
+- `/wp-json/` REST API endpoints
+- WordPress-specific HTML patterns
+
+### Plugin Detection
+Plugins are identified through:
+- Script tags with `/wp-content/plugins/` paths
+- Stylesheet links to plugin directories
+- Version parameters in query strings (`?ver=X.X.X`)
+- Inline HTML references to plugin assets
+
+### Vulnerability Checking
+The extension maintains:
+- **Known Plugin CVE Database**: Maps plugin slugs to CVE records
+- **WordPress Core Vulnerability Database**: 50+ core vulnerabilities with version ranges
+- **Version Comparison Logic**: Accurately matches site version against vulnerable ranges
+
+### Username Enumeration
+Three enumeration techniques:
+1. **DOM Parsing**: Scans for author links in page HTML
+2. **REST API**: Queries `/wp-json/wp/v2/users` endpoint
+3. **Author Archives**: Tests author ID parameters (`/?author=1`)
+
+---
+
+## ⚠️ Disclaimer
+
+> This tool is intended solely for **educational, research, and authorized security testing purposes only**.
+>
+> You must have **explicit permission** to analyze any website you do not own.
+>
+> Koanyx WP Scanner does **not exploit vulnerabilities** it only identifies publicly available information.
+>
+> The author and contributors are **not responsible** for misuse or legal consequences resulting from unauthorized usage.
+>
+> Always follow ethical hacking standards and applicable laws.
+
+---
+
+## 🧠 Use Cases
+
+- WordPress Security Audits
+- Bug Bounty Reconnaissance
+- Red Team & Blue Team Assessments
+- Plugin Exposure Analysis
+- Vulnerability Research
+- Cybersecurity Education & Training
+
+Koanyx WP Scanner is ideal for the **recon phase** before deeper testing begins.
+
+---
+
+## **Team Working and Collaboration:**
+
+* [AnonKryptiQuz](https://github.com/AnonKryptiQuz)
+* [0nsec](https://github.com/0nsec)
+
+---
+
+## **Author**
+
+**Created by:** [Nuknov](https://github.com/Nuknov) 
